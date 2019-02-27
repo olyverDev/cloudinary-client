@@ -1,5 +1,5 @@
 
-var hello = function() {
+const hello = () => {
   console.log('Rolled up');
 }
 
