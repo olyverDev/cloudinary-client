@@ -7,21 +7,22 @@ import { uglify } from 'rollup-plugin-uglify';
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
-	input: 'src/index.jsx',
-	output: {
-		file: production ? 'build/bundle.js' : 'public/bundle.js',
-		format: 'cjs',
-		sourcemap: !production
-	},
-	plugins: [
-		resolve(),
-		commonjs(),
-		babel({
+  input: 'src/index.jsx',
+  output: {
+    file: production ? 'build/bundle.js' : 'public/bundle.js',
+    format: 'esm',
+    sourcemap: !production,
+    sourcemapFile: 'public/bundle.js'
+  },
+  plugins: [
+    resolve(),
+    commonjs(),
+    babel({
       exclude: 'node_modules/**'
-		}),
-		replace({
-      'process.env.NODE_ENV': JSON.stringify( production ? 'production' : 'development' )
     }),
-		production && uglify()
-	]
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
+    }),
+    production && uglify()
+  ]
 };
