@@ -7,7 +7,8 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "dev": "serve public",
-    "start": "npm-run-all --parallel watch dev"
+    "start": "npm-run-all --parallel watch dev",
+    "test": "rollup -c"
   },
   "author": "",
   "license": "ISC",
