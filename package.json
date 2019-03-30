@@ -8,7 +8,7 @@
     "watch": "rollup -c -w",
     "dev": "serve public",
     "start": "npm-run-all --parallel watch dev",
-    "test": "rollup -c"
+    "test": "./node_modules/.bin/jest"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,8 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "enzyme": "^3.9.0",
+    "jest": "^24.5.0",
     "rollup": "^1.3.2",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.1",
