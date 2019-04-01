@@ -1,4 +1,7 @@
 module.exports = {
   verbose: true,
-  setupFilesAfterEnv: ['<rootDir>/enzyme.config.js'],
+  setupFilesAfterEnv: ['./enzyme.config.js'],
+  testPathIgnorePatterns: [
+    '.yarn-cache/', '/node_modules/',
+  ],
 };
