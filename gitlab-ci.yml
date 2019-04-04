@@ -1,0 +1,14 @@
+
+stages:
+  - test
+  - build
+
+unit_test:
+  stage: test
+  script:
+    - yarn run test
+
+build_package:
+  stage: build
+  script:
+    - yarn run build

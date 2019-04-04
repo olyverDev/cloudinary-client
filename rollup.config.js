@@ -4,6 +4,8 @@ import babel from 'rollup-plugin-babel';
 import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 
+const copy = require('./copy');
+
 const production = !process.env.ROLLUP_WATCH;
 
 export default {
@@ -22,6 +24,9 @@ export default {
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
+    }),
+    production && copy({
+      'public/index.html': 'build/index.html',
     }),
     production && uglify()
   ]
