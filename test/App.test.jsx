@@ -8,7 +8,7 @@ describe('App.jsx', () => {
       const wrapper = mount(<App />);
       wrapper.setProps({ test: true })
 
-      expect(wrapper.props().test).toBe(true);
+      expect(wrapper.props().test).toBe(false);
     });
   },
 );
