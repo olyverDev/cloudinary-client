@@ -1,5 +1,10 @@
 image: node:alpine
 
+before_script:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn install
+
 cache:
   paths:
     - node_modules/
@@ -8,6 +13,7 @@ cache:
 stages:
   - test
   - build
+  - deploy
 
 test:
   stage: test
@@ -18,3 +24,13 @@ build:
   stage: build
   script:
     - yarn run build
+
+pages:
+  stage: deploy
+  image: node:alpine
+  script:
+    - yarn run build
+  artifacts:
+    paths:
+      - build
+  
