@@ -1,3 +1,10 @@
+image: node:alpine
+
+cache:
+  paths:
+    - node_modules/
+    - .yarn
+
 stages:
   - test
   - build
