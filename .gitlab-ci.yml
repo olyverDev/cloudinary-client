@@ -1,7 +1,6 @@
 image: node:alpine
 
 before_script:
-  - curl -o- -L https://yarnpkg.com/install.sh | sh
   - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
 
 cache:
