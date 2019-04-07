@@ -1,5 +1,3 @@
-image: shared-runners-manager-4.gitlab.com
-
 stages:
   - test
   - build
