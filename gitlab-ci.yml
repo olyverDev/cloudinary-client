@@ -4,12 +4,12 @@ stages:
   - test
   - build
 
-unit_test:
+test:
   stage: test
   script:
     - yarn run test
 
-build_package:
+build:
   stage: build
   script:
     - yarn run build
