@@ -25,10 +25,10 @@ export default {
     replace({
       'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
     }),
-    production && copy({
-      'public/index.html': 'build/index.html',
-      'public/bundle.js': 'build/bundle.js',
-    }),
+    // production && copy({
+    //   'public/index.html': 'build/index.html',
+    //   'public/bundle.js': 'build/bundle.js',
+    // }),
     production && uglify()
   ]
 };

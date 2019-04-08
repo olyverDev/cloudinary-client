@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf ./build && mkdir ./build && rollup -c",
+    "build": "rollup -c",
     "watch": "rollup -c -w",
     "dev": "serve public",
     "start": "npm-run-all --parallel watch dev",
