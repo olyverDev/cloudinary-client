@@ -25,10 +25,21 @@ build:
 
 pages:
   stage: deploy
+  environment: staging
   image: node:alpine
   script:
     - yarn run build
   artifacts:
     paths:
       - public
-  
+
+build_prod:
+  stage: build
+  image: node:alpine
+  script:
+    - yarn run build
+    - docker login registry.gitlab.com
+    - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
+    - docker push registry.gitlab.com/olyverdev/cloudinary-client
+  only:
+    - master
