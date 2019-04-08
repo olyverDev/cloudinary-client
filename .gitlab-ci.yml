@@ -1,5 +1,11 @@
 image: node:alpine
 
+variables:
+  DOCKER_DRIVER: overlay
+
+services:
+  - docker:dind
+
 before_script:
   - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
 
