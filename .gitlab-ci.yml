@@ -26,6 +26,7 @@ test:
 
 build_package: &build_package
   stage: build
+  image: node:alpine
   script:
     - yarn run build
 
@@ -39,7 +40,7 @@ pages:
     paths:
       - public
 
-build_prod:
+build_artifact:
   <<: *build_package
   stage: build
   image: docker:latest
