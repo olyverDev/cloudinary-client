@@ -41,7 +41,7 @@ pages:
 
 build_prod:
   stage: build
-  image: node:alpine
+  image: docker:latest
   script:
     - yarn run build
     - docker login registry.gitlab.com
