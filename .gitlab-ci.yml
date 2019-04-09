@@ -1,4 +1,4 @@
-image: node:alpine
+image: node
 
 variables:
   DOCKER_DRIVER: overlay
@@ -26,14 +26,14 @@ test:
 
 build_package: &build_package
   stage: build
-  image: node:alpine
+  image: node
   script:
     - yarn run build
 
 pages:
   stage: deploy
   environment: staging
-  image: node:alpine
+  image: node
   script:
     - yarn run build
   artifacts:
