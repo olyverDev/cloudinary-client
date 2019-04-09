@@ -6,6 +6,10 @@ variables:
 services:
   - docker:dind
 
+before_script:
+  - export PATH=$HOME/.yarn/bin:$PATH
+  - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
+
 cache:
   paths:
     - node_modules/
@@ -18,18 +22,12 @@ stages:
 
 test:
   stage: test
-  before_script:
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
   script:
     - yarn run test
 
 build_package: &build_package
   stage: build
   image: node
-  before_script:
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
   script:
     - yarn run build
 
@@ -37,22 +35,19 @@ pages:
   stage: deploy
   environment: staging
   image: node
-  before_script:
-  - export PATH=$HOME/.yarn/bin:$PATH
-  - yarn install --cache-folder .yarn-cache --no-progress --no-emoji
   script:
     - yarn run build
   artifacts:
     paths:
       - public
 
-build_artifact:
-  <<: *build_package
-  stage: build
-  image: docker:latest
-  script:
-    - docker login registry.gitlab.com
-    - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
-    - docker push registry.gitlab.com/olyverdev/cloudinary-client
-  only:
-    - master
+# build_artifact:
+#   <<: *build_package
+#   stage: build
+#   image: docker:latest
+#   script:
+#     - docker login registry.gitlab.com
+#     - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
+#     - docker push registry.gitlab.com/olyverdev/cloudinary-client
+#   only:
+#     - master
