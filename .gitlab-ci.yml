@@ -46,7 +46,8 @@ build_image:
   before_script:
     - '' # override global before_script to not install yarn dependencies
   script:
-    - docker login registry.gitlab.com
+    - echo $DOCKER_USERNAME $DOCKER_PASSWORD
+    - docker login registry.gitlab.com -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
     - docker push registry.gitlab.com/olyverdev/cloudinary-client
   only:
