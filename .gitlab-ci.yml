@@ -27,27 +27,27 @@ test:
 
 build_package: &build_package
   stage: build
-  image: node
   script:
     - yarn run build
 
 pages:
   stage: deploy
   environment: staging
-  image: node
   script:
     - yarn run build
   artifacts:
     paths:
       - public
 
-# build_artifact:
-#   <<: *build_package
-#   stage: build
-#   image: docker:latest
-#   script:
-#     - docker login registry.gitlab.com
-#     - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
-#     - docker push registry.gitlab.com/olyverdev/cloudinary-client
-#   only:
-#     - master
+build_image:
+  <<: *build_package
+  stage: build
+  image: docker:latest
+  before_script:
+    - '' # override global before_script to not install yarn dependencies
+  script:
+    - docker login registry.gitlab.com
+    - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
+    - docker push registry.gitlab.com/olyverdev/cloudinary-client
+  only:
+    - master
