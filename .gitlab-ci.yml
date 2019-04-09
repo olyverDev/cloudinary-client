@@ -44,7 +44,7 @@ build_image:
   stage: build
   image: docker:latest
   before_script:
-    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD registry.gitlab.com
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   script:
     - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
     - docker push registry.gitlab.com/olyverdev/cloudinary-client
