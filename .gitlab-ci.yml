@@ -50,3 +50,11 @@ build_image:
     - docker push registry.gitlab.com/olyverdev/cloudinary-client
   only:
     - master
+
+deploy_prod:
+  type: deploy
+  environment: production
+  script:
+  - ssh root@68.183.69.11 "cd git/cloudinary-client && git checkout master && git pull origin master && exit"
+  only:
+  - master
