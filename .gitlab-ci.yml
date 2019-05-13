@@ -53,8 +53,17 @@ build_image:
 
 deploy_prod:
   type: deploy
-  environment: production
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+    - apt-get install rsync
+  environment:
+    - name: production
+    - url: http://$SERVER_IP
   script:
-  - ssh root@68.183.69.11 "cd git/cloudinary-client && git checkout master && git pull origin master && exit"
+  - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker build -t cloudinary-client .; docker run cloudinary-client"
   only:
   - master
