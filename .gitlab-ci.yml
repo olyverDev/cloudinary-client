@@ -60,9 +60,7 @@ deploy_prod:
     - mkdir -p ~/.ssh
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - apt-get install rsync
-  environment:
-    - name: production
-    - url: http://$SERVER_IP
+  environment: production
   script:
   - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker build -t cloudinary-client .; docker run cloudinary-client"
   only:
