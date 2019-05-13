@@ -66,6 +66,6 @@ deploy_prod:
   - chmod 644 ~/.ssh/known_hosts
   environment: production
   script:
-  - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker build -t cloudinary-client .; docker run cloudinary-client"
+  - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker stop registry.gitlab.com/olyverdev/cloudinary-client || true; docker run registry.gitlab.com/olyverdev/cloudinary-client:latest"
   only:
   - master
