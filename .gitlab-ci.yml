@@ -54,12 +54,16 @@ build_image:
 deploy_prod:
   type: deploy
   before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
-    - mkdir -p ~/.ssh
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-    - apt-get install rsync
+  # Check for ssh-agent + rsync and install if not present
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )'
+  - eval $(ssh-agent -s)
+  # Inject the remote's private key
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  # Append keyscan output into known hosts
+  - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
   environment: production
   script:
   - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker build -t cloudinary-client .; docker run cloudinary-client"
