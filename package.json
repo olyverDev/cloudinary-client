@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "recreatePublicDir": "rm -rf public && mkdir public",
-    "build": "yarn run recreatePublicDir && rollup -c",
-    "watch": "yarn run recreatePublicDir && rollup -c -w",
+    "mkdirPublic": "rm -rf public && mkdir public",
+    "build": "yarn run mkdirPublic && rollup -c",
+    "watch": "yarn run mkdirPublic && rollup -c -w",
     "dev": "serve public",
     "start": "npm-run-all --parallel watch dev",
     "test": "./node_modules/.bin/jest"
