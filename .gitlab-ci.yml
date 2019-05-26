@@ -2,6 +2,9 @@ image: node
 
 variables:
   DOCKER_DRIVER: overlay
+  GITLAB_REGISTRY: registry.gitlab.com
+  REPO_REGISTRY: registry.gitlab.com/olyverdev/cloudinary-client
+  CONTAINER_NAME: cloudinary-client
 
 services:
   - docker:dind
@@ -44,28 +47,9 @@ build_image:
   stage: build
   image: docker:latest
   before_script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $GITLAB_REGISTRY
   script:
-    - docker build -t registry.gitlab.com/olyverdev/cloudinary-client .
-    - docker push registry.gitlab.com/olyverdev/cloudinary-client
+    - docker build -t $REPO_REGISTRY .
+    - docker push $REPO_REGISTRY
   only:
     - master
-
-deploy_prod:
-  type: deploy
-  before_script:
-  # Check for ssh-agent + rsync and install if not present
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y  )'
-  - eval $(ssh-agent -s)
-  # Inject the remote's private key
-  - ssh-add <(echo "$PRIVATE_KEY" | base64 -d)
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
-  # Append keyscan output into known hosts
-  - ssh-keyscan $SERVER_IP >> ~/.ssh/known_hosts
-  - chmod 644 ~/.ssh/known_hosts
-  environment: production
-  script:
-  - ssh root@$SERVER_IP "docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com; docker build -t registry.gitlab.com/olyverdev/cloudinary-client:latest || true; docker run -p 8888:80 registry.gitlab.com/olyverdev/cloudinary-client:latest"
-  only:
-  - master
