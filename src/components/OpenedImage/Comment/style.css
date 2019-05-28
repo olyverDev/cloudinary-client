@@ -1,0 +1,31 @@
+.commentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50px;
+  border-bottom: 0.7px solid whitesmoke;
+}
+
+.commentWrapper:hover {
+  background: whitesmoke;
+}
+
+.comment, .date {
+  max-width: 220px;
+  width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.comment {
+  color: #333;
+  font-size: 0.8rem;
+  padding-bottom: 5px;
+}
+
+.date {
+  color: gray;
+  font-size: 0.6rem;
+}
+

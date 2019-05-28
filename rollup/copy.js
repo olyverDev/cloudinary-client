@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'fs'
 
-module.exports = function (sourcesToDestinations = {}) {
+export default function (sourcesToDestinations = {}) {
   return {
     name: 'copy',
     generateBundle: function () {

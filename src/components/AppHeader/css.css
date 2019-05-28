@@ -1,0 +1,40 @@
+.AppHeader {
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background: rgb(65, 65, 65);
+  z-index: 2;
+}
+
+.headerTitle {
+  color: rgb(219, 223, 28);
+  padding-left: 15px;
+  padding-right: 25px;
+}
+
+.toLogIn {
+  color: white;
+  padding-right: 15px;
+  padding-left: 25px;
+}
+
+.headerTitle, .toLogIn {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.toLogIn:hover {
+  color: lightgray;
+  text-decoration: underline;
+}
+
+.headerTitle:hover {
+  color: white;
+  text-decoration: underline;
+}

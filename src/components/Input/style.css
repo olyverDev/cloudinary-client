@@ -1,0 +1,19 @@
+
+.textArea, .textInput {
+  padding-left: 5px;
+  width: 350px;
+}
+
+.textArea {
+  height: 80px;
+}
+
+.textInput {
+  height: 30px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,40 @@
+.adminContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+/* info */
+.adminInfo {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.infoText {
+  padding: 15px 8px 15px 8px;
+  color: rgb(123, 194, 218);
+  align-items: center;
+  font-weight: bold;
+}
+
+.countText {
+  padding: 15px 8px 15px 8px;
+  color: gray;
+  align-items: center;
+  font-weight: bolder;
+}
+
+/* buttons */
+.buttons {
+  z-index: 5;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.uploadReal {
+  display: none;
+}

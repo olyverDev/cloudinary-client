@@ -1,0 +1,32 @@
+.loginContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.credInput {
+  height: 50px;
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+
+.loginButton {
+  height: 50px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background: cornflowerblue;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  opacity: 0.8;
+}

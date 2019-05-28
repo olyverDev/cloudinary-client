@@ -1,0 +1,25 @@
+.commentsForm {
+  display: flex;
+  width: 310px;
+  min-height: 40px;
+}
+
+.commentInput {
+  width: 100%;
+  padding-left: 10px;
+}
+
+.submitIcon {
+  padding-left: 6px;
+  border-left: 0;
+  background: white;
+  cursor: pointer;
+}
+
+.submitIcon:hover {
+  background: gray;
+}
+
+@media screen and (max-width: 400px) {
+  .commentsForm { width: auto }
+}

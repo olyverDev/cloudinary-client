@@ -1,0 +1,26 @@
+.buttonWrapper {
+  flex: 1;
+}
+
+.activeButton, .disabledButton {
+  height: 50px;
+  border: 1px solid white;
+  width: 100%;
+
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.activeButton {
+  background: cornflowerblue;
+}
+
+.activeButton:hover {
+  background-color: rgb(59, 125, 247);
+}
+
+.disabledButton {
+  background: lightgrey;
+  cursor: text;
+}

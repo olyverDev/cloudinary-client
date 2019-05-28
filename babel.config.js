@@ -7,11 +7,18 @@ module.exports = function (api) {
       '@babel/preset-env',
       {
         modules: isTest ? 'commonjs' : false,
+        useBuiltIns: "usage",
       },
     ],
     '@babel/preset-react',
   ];
-  const plugins = [];
+  const plugins = [
+    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-transform-runtime", {
+      helpers: true,
+      regenerator: true,
+    }],
+  ];
 
   return {
     presets,

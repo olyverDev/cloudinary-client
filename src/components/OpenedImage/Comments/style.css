@@ -1,0 +1,9 @@
+.commentsContainer {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

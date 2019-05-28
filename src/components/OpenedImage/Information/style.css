@@ -1,0 +1,56 @@
+
+.informationContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 100%;
+  overflow: auto;
+}
+
+.item, .detailsItem {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.item {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 48px 18px 18px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.detailsItem {
+  flex-direction: column;
+  padding-left: 18px;
+}
+
+.detailsLabel, .label {
+  color: lightblue;
+}
+
+.detailsLabel {
+  margin-bottom: 10px;
+  padding-top: 18px;
+}
+
+.price, .count, .detailsLabel, .label {
+  font-weight: bold;
+}
+
+.price {
+  color: rgb(17, 255, 17);
+}
+
+.count {
+  color: gray;
+}
+
+.details {
+  color: #333;
+  background-color: white;
+  min-height: 40px;
+  border: none;
+  resize: none;
+}

@@ -1,0 +1,27 @@
+.editModalContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 15%;
+  left: 30%;
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid cornflowerblue;
+}
+
+.infoContainer {
+  width: 600px;
+  height: 350px;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.actionButtons {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
