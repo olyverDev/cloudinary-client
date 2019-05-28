@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
 import React from 'react';
 
-import App from '../src/App';
+import Toast from '../src/components/Toast/Toast';
 
-describe('App.jsx', () => {
-    it('renders <App />', () => {
-      const wrapper = mount(<App />);
+describe('Toast.jsx', () => {
+    it('renders <Toast />', () => {
+      const wrapper = mount(<Toast />);
       wrapper.setProps({ test: true })
 
       expect(wrapper.props().test).toBe(true);

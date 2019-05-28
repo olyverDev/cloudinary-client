@@ -4,4 +4,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '.yarn-cache/', '/node_modules/',
   ],
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy',
+  },
 };
